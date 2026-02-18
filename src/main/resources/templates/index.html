@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reddit Shadowban Checker</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background: #f0f2f5; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 400px; text-align: center; }
+        input { width: 80%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 10px 20px; background: #ff4500; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #ff5722; }
+        .result { margin-top: 20px; font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Reddit Shadow-Check</h2>
+        <form th:action="@{/check}" method="get">
+            <input type="text" name="username" placeholder="Enter Reddit Username" required>
+            <br>
+            <button type="submit">Check Status</button>
+        </form>
+
+        <div class="result" th:if="${status}">
+            <p>Result for <span th:text="${username}"></span>:</p>
+            <p th:text="${status}"></p>
+        </div>
+    </div>
+</body>
+</html>
